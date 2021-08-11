@@ -5,6 +5,7 @@ import profile1 from 'C:/Users/harshit.jadon.MD-CJDKE06555KH/Desktop/ReactJs/emp
 import profile2 from 'C:/Users/harshit.jadon.MD-CJDKE06555KH/Desktop/ReactJs/employeepayrollapp/src/assests/images/Ellipse -3.png';
 import profile3 from 'C:/Users/harshit.jadon.MD-CJDKE06555KH/Desktop/ReactJs/employeepayrollapp/src/assests/images/Ellipse -7.png';
 import profile4 from 'C:/Users/harshit.jadon.MD-CJDKE06555KH/Desktop/ReactJs/employeepayrollapp/src/assests/images/Ellipse -8.png';
+import EmployeeService from 'C:/Users/harshit.jadon.MD-CJDKE06555KH/Desktop/ReactJs/employeepayrollapp/src/server/employeeservice.js';
 
 class PayrollForm extends React.Component{
     constructor(){
@@ -102,9 +103,33 @@ class PayrollForm extends React.Component{
             this.setState({isError:true})
         } else {
           this.setState({dateError:''});
-          this.setState({isError:false});
-        }
+          this.setState({isError:false});}
     }
+    save = async (event) => {
+        console.log("save button clicked");
+
+        if(this.state.isError){
+            window.alert("Please Fill correct values");
+        }else{
+            let object = {
+                id:'',
+                name: this.state.name,
+                profilePic:this.state.profile,
+                department: this.state.department,
+                gender:this.state.gender,
+                salary:this.state.salary,
+                startDate:`${this.state.day} ${this.state.month} ${this.state.year}`,
+                notes:this.state.notes,
+            }
+            const employeeService = new EmployeeService();
+            employeeService.addEmployee(object).then((data) => {
+                 console.log("data added");
+             })
+             .catch((err) => {
+                 console.log("Error While Add");
+             })
+             window.alert(JSON.stringify(object)); }
+        }
 
     render(){
         return(
