@@ -1,0 +1,69 @@
+{
+    "employee": [
+        {
+          "id": 1,
+          "name": "Harshit",
+          "department": [
+            "HR"
+          ],
+          "gender": "Male",
+          "salary": "10000",
+          "startDate": "1 Jan 2021",
+          "notes": "",
+          "profilePic": "./assests/images/Ellipse -1.png"
+        },
+        {
+          "id": 2,
+          "name": "Jadon",
+          "department": [
+            "Finance",
+            "Engineer"
+          ],
+          "gender": "Male",
+          "salary": "20000",
+          "startDate": "2 Feb 2020",
+          "notes": "",
+          "profilePic": "./assests/images/Ellipse -3.png"
+        },
+        {
+          "id": 3,
+          "name": "Ankur",
+          "department": [
+            "HR",
+            "Sales",
+            "Finance"
+          ],
+          "gender": "Male",
+          "salary": "30000",
+          "startDate": "3 Mar 2020",
+          "notes": "",
+          "profilePic": "./assests/images/Ellipse -7.png"
+        },
+        {
+          "id": 4,
+          "name": "Thakur",
+          "department": [
+            "HR",
+            "Engineer"
+          ],
+          "gender": "Male",
+          "salary": "40000",
+          "startDate": "4 Apr 2021",
+          "notes": "React Js",
+          "profilePic": "./assests/images/Ellipse -8.png"
+        },
+        {
+          "id": 5,
+          "name": "Tanisha",
+          "department": [
+            "HR",
+            "Engineer"
+          ],
+          "gender": "Female",
+          "salary": "50000",
+          "startDate": "15 May 2021",
+          "notes": "Employee PAyroll app in react js",
+          "profilePic": "./assests/images/Ellipse -7.png"
+        }
+      ]
+    } 
