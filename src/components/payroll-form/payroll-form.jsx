@@ -1,11 +1,11 @@
 import React from 'react';
 import './payroll-form.scss';
-import logo from 'C:/Users/harshit.jadon.MD-CJDKE06555KH/Desktop/ReactJs/employeepayrollapp/src/assests/images/headerlogo.png';
-import profile1 from 'C:/Users/harshit.jadon.MD-CJDKE06555KH/Desktop/ReactJs/employeepayrollapp/src/assests/images/Ellipse -1.png';
-import profile2 from 'C:/Users/harshit.jadon.MD-CJDKE06555KH/Desktop/ReactJs/employeepayrollapp/src/assests/images/Ellipse -3.png';
-import profile3 from 'C:/Users/harshit.jadon.MD-CJDKE06555KH/Desktop/ReactJs/employeepayrollapp/src/assests/images/Ellipse -7.png';
-import profile4 from 'C:/Users/harshit.jadon.MD-CJDKE06555KH/Desktop/ReactJs/employeepayrollapp/src/assests/images/Ellipse -8.png';
-import EmployeeService from 'C:/Users/harshit.jadon.MD-CJDKE06555KH/Desktop/ReactJs/employeepayrollapp/src/server/employeeservice.js';
+import logo from '../../assests/images/headerlogo.png';
+import profile1 from '../../assests/images/Ellipse -1.png';
+import profile2 from '../../assests/images/Ellipse -3.png';
+import profile3 from '../../assests/images/Ellipse -7.png';
+import profile4 from '../..//assests/images/Ellipse -8.png';
+import EmployeeService from '../../services/employeeservice.js';
 
 class PayrollForm extends React.Component{
     constructor(){
@@ -111,7 +111,7 @@ class PayrollForm extends React.Component{
         if(this.state.isError){
             window.alert("Please Fill correct values");
         }else{
-            let object = {
+            let employeeObject = {
                 id:'',
                 name: this.state.name,
                 profilePic:this.state.profile,
@@ -121,14 +121,13 @@ class PayrollForm extends React.Component{
                 startDate:`${this.state.day} ${this.state.month} ${this.state.year}`,
                 notes:this.state.notes,
             }
-            const employeeService = new EmployeeService();
-            employeeService.addEmployee(object).then((data) => {
-                 console.log("data added");
+            new EmployeeService().addEmployee(employeeObject).then((data) => {
+               console.log("Data Added Successfully")
              })
-             .catch((err) => {
+             .catch(err => {
                  console.log("Error While Add");
              })
-             window.alert(JSON.stringify(object)); }
+            }
         }
 
     render(){
@@ -147,13 +146,13 @@ class PayrollForm extends React.Component{
                     <form className="form" action="#">
                         <div className="form-header">Employee Payroll Form</div>
                         <div className="row-content">
-                            <label className="label text" for="name">Name</label>
+                            <label className="label text" htmlFor="name">Name</label>
                             <input className="input" type="text" id="name" name="name" placeholder="Enter Your Name" onChange={(e) => this.handleNameChange(e)} required />
                             <error-output className="text-error" htmlFor="name">{this.state.nameError}</error-output>
                         </div>
 
                         <div className="row-content">
-                            <label className="label text" for="Profile">Profile Image</label>
+                            <label className="label text" htmlFor="Profile">Profile Image</label>
                                 <div className="profile-radio-content">
                                     <label>
                                         <input type="radio" id="profile1" name="profile" value="../../assets/Ellipse -3.png" required onChange={(e) => this.handleProfileChange(e)}/>
@@ -175,19 +174,19 @@ class PayrollForm extends React.Component{
                         </div>
 
                         <div className="row-content">
-                            <label className="label text" for="gender">Gender</label>
+                            <label className="label text" htmlFor="gender">Gender</label>
                                 <div>
                                     <input type="radio" id="male" name="gender" value="Male" onChange={(e) => this.handleGenderChange(e)} />
-                                    <label className="text" for="male">Male</label>
+                                    <label className="text" htmlFor="male">Male</label>
                                     <input type="radio" id="female" name="gender" value="Female" onChange={(e) => this.handleGenderChange(e)}/>
-                                    <label className="text" for="female">Female</label>
+                                    <label className="text" htmlFor="female">Female</label>
                                     <input type="radio" id="other" name="gender" value="Other" onChange={(e) => this.handleGenderChange(e)}/>
-                                    <label className="text" for="other">Other</label>
+                                    <label className="text" htmlFor="other">Other</label>
                                 </div>
                         </div>
 
                         <div className="row-content">
-                            <label className="label text" for="department">Department</label>
+                            <label className="label text" htmlFor="department">Department</label>
                             <div>
                                 {this.state.allDepartment.map(item => (
                                     <span key={item}>
@@ -206,12 +205,12 @@ class PayrollForm extends React.Component{
                         </div>
 
                         <div className="row-content">
-                            <label className="label text" for="notes">Note</label>
+                            <label className="label text" htmlFor="notes">Note</label>
                             <textarea id="notes" className="input" name="notes" placeholder="" onChange={(e) => this.handleNoteChange(e)}></textarea>
                         </div>
 
                         <div className="row-content">
-                            <label className="label text" for="startDate">Start Date</label>
+                            <label className="label text" htmlFor="startDate">Start Date</label>
                             <div id="date">
                                 <select id="day" name="day" onChange={(e) =>this.dayChangeHandler(e) }>
                                     <option value="1">1</option>
