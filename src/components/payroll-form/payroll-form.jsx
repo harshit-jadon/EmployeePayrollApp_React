@@ -1,5 +1,6 @@
 import React from 'react';
 import './payroll-form.scss';
+import {Link, withRouter, useParams} from 'react-router-dom';
 import logo from '../../assests/images/headerlogo.png';
 import profile1 from '../../assests/images/Ellipse -1.png';
 import profile2 from '../../assests/images/Ellipse -3.png';
@@ -121,8 +122,8 @@ class PayrollForm extends React.Component{
                 startDate:`${this.state.day} ${this.state.month} ${this.state.year}`,
                 notes:this.state.notes,
             }
-            new EmployeeService().addEmployee(employeeObject).then((data) => {
-               console.log("Data Added Successfully")
+            new EmployeeService().addEmployee(employeeObject).then(responseText => {
+               console.log("Data Added Successfully" + JSON.stringify(responseText.data));
              })
              .catch(err => {
                  console.log("Error While Add");
